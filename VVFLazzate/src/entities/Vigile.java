@@ -91,7 +91,7 @@ public class Vigile extends Persona {
 
 	@Override
 	public String toString() {
-		return super.toString() + (grado != null ? "Grado: " + grado + ", \n" : "") + "Patente: " + patente + "° grado, \nAnnoDecreto: "
+		return super.toString() + "\n" + (grado != null ? "Grado: " + grado + ", \n" : "") + "Patente: " + patente + "° grado, \nAnnoDecreto: "
 				+ annoDecreto + ", \n" + (qualifiche != null ? "Qualifiche: " + qualifiche : "");
 	}
 	
