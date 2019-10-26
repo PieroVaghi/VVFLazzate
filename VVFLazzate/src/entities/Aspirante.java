@@ -26,6 +26,13 @@ public class Aspirante extends Persona {
 			return true;
 		return false;
 	}
+
+	@Override
+	public String toString() {
+		return super.toString() + "\n" + ((decretato) ? "Decretato" : "In attesa di decreto");
+	}
+	
+	
 	
 	
 
