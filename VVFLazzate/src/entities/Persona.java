@@ -10,7 +10,7 @@ public class Persona {
 	private static  String charNotLetters = "0123456789,.;:-_|!£$%&/()=?^*+€°§";
 	private static final String charNotNumbers = "abcdefghijklmnopqrstuvwxyz,.;:_<>ùàòè+ç°§*é@#ù][{}ì'|!£$%&/()=?^";
 	
-	// COSTRUTTORI
+	// COSTRUTTORI ---------------------------------------------------------------------------------------------------------------------------
 
 	public Persona(String nome, String cognome, String datanascita, String comuneRes, String tel, String mail) {
 		this.nome = nome;
@@ -21,7 +21,7 @@ public class Persona {
 		this.mail = mail;
 	}
 	
-	// GET-SET
+	// GET-SET ---------------------------------------------------------------------------------------------------------------------------
 	
 	public String getNome() {
 		return nome;
@@ -86,7 +86,7 @@ public class Persona {
 			this.mail = mail;
 	}
 	
-	// VALIDAZIONE
+	// VALIDAZIONE ---------------------------------------------------------------------------------------------------------------------------
 	
 	public static boolean isValido(String[] parti) {			// TODO DA SISTEMARE TUTTE LE PARTI DI PARTI
 		return  isNomeCognomeValido(parti[2]) 	&&
@@ -223,6 +223,8 @@ public class Persona {
 			ris = false;
 		return ris;
 	}
+	
+	// METODI ---------------------------------------------------------------------------------------------------------------------------
 
 	@Override
 	public String toString() {

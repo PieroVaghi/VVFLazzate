@@ -10,6 +10,8 @@ public class Aspirante extends Persona {
 		setDecretato(decretato);
 	}
 
+	// COSTRUTTORE ---------------------------------------------------------------------------------------------------------------------------
+	
 	public boolean isDecretato() {
 		return decretato;
 	}
@@ -20,13 +22,22 @@ public class Aspirante extends Persona {
 		else
 			this.decretato = false;
 	}
+	
+	// VALIDAZIONE ---------------------------------------------------------------------------------------------------------------------------
 
-	private boolean isDecretatoValid(String decretato) {
+	public static boolean isValido(String[] parti) {	//TODO DA SISTEMARE TUTTE LE PARTI DI PARTI
+		return  Persona.isValido(parti) 	&&
+				isDecretatoValid(parti[12]) ;
+	}
+	
+	private static boolean isDecretatoValid(String decretato) {
 		if(decretato.equalsIgnoreCase("si") || decretato.equalsIgnoreCase("no"))
 			return true;
 		return false;
 	}
 
+	// METODI ---------------------------------------------------------------------------------------------------------------------------
+	
 	@Override
 	public String toString() {
 		return super.toString() + "\n" + ((decretato) ? "Decretato" : "In attesa di decreto");

@@ -7,6 +7,8 @@ public class Mezzo {
 	
 	private static  String charNotLetters = ",.;:-_|!£$%&/()=?^*+€°§";
 	
+	// COSTRUTTORE ---------------------------------------------------------------------------------------------------------------------------
+	
 	public Mezzo(String nome, String sigla, String targa, int posti) {
 		this.nome = nome;
 		this.sigla = sigla;
@@ -14,6 +16,8 @@ public class Mezzo {
 		this.posti = posti;
 	}
 
+	// GET SET ---------------------------------------------------------------------------------------------------------------------------
+	
 	public String getNome() {
 		return nome;
 	}
@@ -49,6 +53,8 @@ public class Mezzo {
 		if(isPostiValidi(posti))
 			this.posti = posti;
 	}
+	
+	// VALIDAZIONE ---------------------------------------------------------------------------------------------------------------------------
 	
 	static boolean isValido(String[] riga) {
 		return 	isNomeValido(riga[0])	&&
@@ -91,6 +97,8 @@ public class Mezzo {
 		return posti <= 6 && posti >= 2;
 	}
 
+	// METODI ---------------------------------------------------------------------------------------------------------------------------
+	
 	@Override
 	public String toString() {
 		return (nome != null ? "Nome: " + nome + ", \n" : "") + (sigla != null ? "Sigla: " + sigla + ", \n" : "")
