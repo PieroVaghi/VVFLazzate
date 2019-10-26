@@ -28,7 +28,8 @@ public class Persona {
 	}
 
 	public void setNome(String nome) {
-		this.nome = nome;
+		if(isNomeCognomeValido(nome))
+			this.nome = nome;
 	}
 
 	public String getCognome() {
@@ -36,7 +37,17 @@ public class Persona {
 	}
 
 	public void setCognome(String cognome) {
-		this.cognome = cognome;
+		if(isNomeCognomeValido(cognome))
+			this.cognome = cognome;
+	}
+	
+	public String getGenere() {
+		return genere;
+	}
+
+	public void setGenere(String genere) {
+		if(isGenereValido(genere))
+			this.genere = genere;
 	}
 
 	public String getDatanascita() {
@@ -44,7 +55,8 @@ public class Persona {
 	}
 
 	public void setDatanascita(String datanascita) {
-		this.datanascita = datanascita;
+		if(isDataValida(datanascita))
+			this.datanascita = datanascita;
 	}
 
 	public String getComuneRes() {
@@ -52,7 +64,8 @@ public class Persona {
 	}
 
 	public void setComuneRes(String comuneRes) {
-		this.comuneRes = comuneRes;
+		if(isComuneValido(comuneRes))
+			this.comuneRes = comuneRes;
 	}
 
 	public String getTel() {
@@ -60,7 +73,8 @@ public class Persona {
 	}
 
 	public void setTel(String tel) {
-		this.tel = tel;
+		if(isTelValido(tel))
+			this.tel = tel;
 	}
 
 	public String getMail() {
@@ -68,7 +82,8 @@ public class Persona {
 	}
 
 	public void setMail(String mail) {
-		this.mail = mail;
+		if(isMailValida(mail))
+			this.mail = mail;
 	}
 	
 	// VALIDAZIONE
