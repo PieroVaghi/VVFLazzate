@@ -9,6 +9,7 @@ public class Intervento {
 	private boolean reperibilita;
 	private List<Vigile> capopartenza, autista, vigili;
 	
+	// COSTRUTTORE ---------------------------------------------------------------------------------------------------------------------------------------
 	
 	public Intervento(int rapporto, String data, String funzionario, String tipologia, String comune, String indirizzo,
 			String oraUscita, String oraRientro, boolean reperibilita, int unita, List<Vigile> capopartenza,
@@ -28,9 +29,80 @@ public class Intervento {
 		this.vigili = vigili;
 		this.note = note;
 	}
-	
-	
-	
-	
 
+	// GET SET ---------------------------------------------------------------------------------------------------------------------------------------------
+	
+	public int getRapporto() {
+		return rapporto;
+	}
+	
+	public int getUnita() {
+		return unita;
+	}
+	
+	public String getData() {
+		return data;
+	}
+	
+	public String getFunzionario() {
+		return funzionario;
+	}
+	
+	public String getTipologia() {
+		return tipologia;
+	}
+	
+	public String getComune() {
+		return comune;
+	}
+	
+	public String getIndirizzo() {
+		return indirizzo;
+	}
+	
+	public String getOraUscita() {
+		return oraUscita;
+	}
+	
+	public String getOraRientro() {
+		return oraRientro;
+	}
+	
+	public String getNote() {
+		return note;
+	}
+	
+	public boolean isReperibilita() {
+		return reperibilita;
+	}
+	
+	public List<Vigile> getCapopartenza() {
+		return capopartenza;
+	}
+	
+	public List<Vigile> getAutista() {
+		return autista;
+	}
+	
+	public List<Vigile> getVigili() {
+		return vigili;
+	}
+	
+	
+	
+	// VALIDAZIONE -------------------------------------------------------------------------------------------------------------------------------------------------
+	
+//	public static boolean isValido(String[] parti) {
+//		return 	Persona.isTelValido(parti[0])			&&	// valido il rapporto
+//				Persona.isDataValida(parti[1])			&&	// valido la data
+//				Persona.isNomeCognomeValido(parti[2])	&& 	// valido funzionario
+//				isTipologiaValida(parti[3])				&&
+//				Persona.isNomeCognomeValido(parti[4])	&&	// valido comune 
+//				Persona.isNomeCognomeValido(parti[5])	&&	// valido indirizzo
+//				isOraValida(parti[6])					&&
+//				isOraValida(parti[7])					&&
+//				isUnit‡Valide(parti[8])					;
+//	}
+	
+	
 }
