@@ -223,5 +223,14 @@ public class Persona {
 			ris = false;
 		return ris;
 	}
+
+	@Override
+	public String toString() {
+		return "Scheda Personale:\n" + (nome != null ? "Nome: " + nome + ", \n" : "") + (cognome != null ? "Cognome: " + cognome + ", \n" : "")
+				+ (genere != null ? "Genere: " + genere + ", \n" : "")
+				+ (datanascita != null ? "Datanascita: " + datanascita + ", \n" : "")
+				+ (comuneRes != null ? "ComuneRes: " + comuneRes + ", \n" : "")
+				+ (tel != null ? "Tel: " + tel + ", \n" : "") + (mail != null ? "Mail: " + mail : "");
+	}
 	
 }
