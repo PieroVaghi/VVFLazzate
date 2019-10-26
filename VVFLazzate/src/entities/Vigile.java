@@ -1,5 +1,6 @@
 package entities;
 
+import java.time.Year;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +14,7 @@ public class Vigile extends Persona {
 	static String[] qualificheVal = {"TPSS","SAF","NBCR","ATP"};
 	static String[] gradiVal = {"VV","CSV"};
 	
-	// COSTRUTTORE
+	// COSTRUTTORE ---------------------------------------------------------------------------------------------------------------------------
 	
 	public Vigile(String nome, String cognome, String datanascita, String comuneRes, String tel, String mail,
 			String grado, int patente, int annoDecreto, String qualifiche) {
@@ -24,7 +25,7 @@ public class Vigile extends Persona {
 		setQualifiche(qualifiche);
 	}
 	
-	// GET - SET
+	// GET - SET ---------------------------------------------------------------------------------------------------------------------------
 	
 	public String getGrado() {
 		return grado;
@@ -65,7 +66,7 @@ public class Vigile extends Persona {
 					this.qualifiche.add(s);
 	}
 	
-	// VALIDAZIONE
+	// VALIDAZIONE ---------------------------------------------------------------------------------------------------------------------------
 	
 	public static boolean isValido(String[] parti) {	//TODO DA SISTEMARE TUTTE LE PARTI DI PARTI
 		return  Persona.isValido(parti) 	&&
@@ -87,6 +88,12 @@ public class Vigile extends Persona {
 			if(s.equalsIgnoreCase(grado))
 				return true;
 		return false;
+	}
+	
+	// METODI ---------------------------------------------------------------------------------------------------------------------------
+	
+	public int anniServizio () {
+		return Year.now().getValue() - getAnnoDecreto();
 	}
 	
 	public String stampaQualifiche() {
