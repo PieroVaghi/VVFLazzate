@@ -88,6 +88,13 @@ public class Vigile extends Persona {
 				return true;
 		return false;
 	}
+
+	@Override
+	public String toString() {
+		return super.toString() + (grado != null ? "Grado: " + grado + ", \n" : "") + "Patente: " + patente + "° grado, \nAnnoDecreto: "
+				+ annoDecreto + ", \n" + (qualifiche != null ? "Qualifiche: " + qualifiche : "");
+	}
+	
 	
 	
 }
