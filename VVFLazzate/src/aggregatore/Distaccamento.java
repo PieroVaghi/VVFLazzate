@@ -22,6 +22,7 @@ public class Distaccamento {
 	public Distaccamento(String percorso, String username, String pw) {
 		db = new Database(percorso, username, pw);
 		caricaPersonale();
+		caricaMezzi();
 	}
 
 	public void caricaPersonale() {
