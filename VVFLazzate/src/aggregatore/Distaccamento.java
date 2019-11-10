@@ -75,7 +75,7 @@ public class Distaccamento {
 		db.chiudiConnessione();
 	}
 	
-	public boolean aggiungiPersonale(Persona p)
+	public boolean aggiungiOperatore(Persona p)
 	{
 		if(!personale.contains(p)) {
 			for(Persona per : personale)
