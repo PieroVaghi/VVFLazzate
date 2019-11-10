@@ -108,6 +108,14 @@ public class Distaccamento {
 		return ris;
 	}
 	
+	public String ricerca (String nome, String cognome) {
+		String ris = "";
+		for(Persona p : personale)
+			if(p.getNome().equalsIgnoreCase(nome) && p.getCognome().equalsIgnoreCase(cognome))
+				ris += p + "\n";
+		return ris;
+	}
+	
 	
 	
 //	@Override
