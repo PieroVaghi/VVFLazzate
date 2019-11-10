@@ -5,14 +5,17 @@ import java.time.Year;
 public class Persona {
 	
 
-	String nome, cognome, genere, datanascita, comuneRes, tel, mail;
+	String nome, cognome, datanascita, comuneRes, tel, mail, ruolo;
+	int id;
 	
 	private static  String charNotLetters = "0123456789,.;:-_|!£$%&/()=?^*+€°§";
 	private static final String charNotNumbers = "abcdefghijklmnopqrstuvwxyz,.;:_<>ùàòè+ç°§*é@#ù][{}ì'|!£$%&/()=?^";
 	
 	// COSTRUTTORI ---------------------------------------------------------------------------------------------------------------------------
 
-	public Persona(String nome, String cognome, String datanascita, String comuneRes, String tel, String mail) {
+	public Persona(int id, String nome, String cognome, String datanascita, String comuneRes, String tel, String mail, String ruolo) {
+		this.id = id;
+		this.ruolo = ruolo;
 		this.nome = nome;
 		this.cognome = cognome;
 		this.datanascita = datanascita;
@@ -23,8 +26,27 @@ public class Persona {
 	
 	// GET-SET ---------------------------------------------------------------------------------------------------------------------------
 	
+	
+	
 	public String getNome() {
 		return nome;
+	}
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getRuolo() {
+		return ruolo;
+	}
+	
+	public void setRuolo(String ruolo) {
+		if(isNomeCognomeValido(ruolo))
+			this.ruolo = ruolo;
 	}
 
 	public void setNome(String nome) {
@@ -41,15 +63,6 @@ public class Persona {
 			this.cognome = cognome;
 	}
 	
-	public String getGenere() {
-		return genere;
-	}
-
-	public void setGenere(String genere) {
-		if(isGenereValido(genere))
-			this.genere = genere;
-	}
-
 	public String getDatanascita() {
 		return datanascita;
 	}
@@ -92,7 +105,6 @@ public class Persona {
 		return  isNomeCognomeValido(parti[2]) 	&&
 				isNomeCognomeValido(parti[3]) 	&&
 				isDataValida(parti[4])			&&
-				isGenereValido(parti[5])		&&
 				isComuneValido(parti[2])		&&
 				isTelValido(parti[1])			&&
 				isMailValida(parti[7])			;			
@@ -174,17 +186,6 @@ public class Persona {
 				isGiornoGiusto(giorno,mese,anno);
 	}	
 	
-	public static boolean isGenereValido (String genere) {
-		switch (genere.toUpperCase()) {
-			case "M":
-			case "F":
-			case "N":
-				return true;
-			default:
-				return false;
-		}			
-	}
-	
 	public static boolean isComuneValido (String comune) {
 		boolean ris = true;
 		if(!comune.isEmpty()) {
@@ -223,16 +224,19 @@ public class Persona {
 			ris = false;
 		return ris;
 	}
-	
+
 	// METODI ---------------------------------------------------------------------------------------------------------------------------
 
 	@Override
 	public String toString() {
-		return "Scheda Personale:\n" + (nome != null ? "Nome: " + nome + ", \n" : "") + (cognome != null ? "Cognome: " + cognome + ", \n" : "")
-				+ (genere != null ? "Genere: " + genere + ", \n" : "")
-				+ (datanascita != null ? "Datanascita: " + datanascita + ", \n" : "")
-				+ (comuneRes != null ? "ComuneRes: " + comuneRes + ", \n" : "")
-				+ (tel != null ? "Tel: " + tel + ", \n" : "") + (mail != null ? "Mail: " + mail : "");
+		return "id: " + id + ", \n" + (nome != null ? "nome: " + nome + ", \n" : "")
+				+ (cognome != null ? "cognome: " + cognome + ", \n" : "")
+				+ (datanascita != null ? "datanascita: " + datanascita + ", \n" : "")
+				+ (comuneRes != null ? "comuneRes: " + comuneRes + ", \n" : "")
+				+ (tel != null ? "tel: " + tel + ", \n" : "") + (mail != null ? "mail: " + mail + ", \n" : "")
+				+ (ruolo != null ? "ruolo: " + ruolo : "");
 	}
+	
+
 	
 }

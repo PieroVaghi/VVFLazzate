@@ -1,36 +1,28 @@
 package entities;
 
 import java.time.Year;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class Vigile extends Persona {
 	
 	private String grado;
-	private int id, patente, annoDecreto;
-	private List<String> qualifiche = new ArrayList<String>();
+	private int patente, annoDecreto;
+	private String qualifiche;
 	
 	static String[] qualificheVal = {"TPSS","SAF","NBCR","ATP"};
 	static String[] gradiVal = {"VV","CSV"};
 	
 	// COSTRUTTORE ---------------------------------------------------------------------------------------------------------------------------
 	
-	public Vigile(int id, String nome, String cognome, String datanascita, String comuneRes, String tel, String mail,
+	public Vigile(int id, String nome, String cognome, String datanascita, String comuneRes, String tel, String mail, String ruolo,
 			String grado, int patente, int annoDecreto, String qualifiche) {
-		super(nome, cognome, datanascita, comuneRes, tel, mail);
-		this.id = id;
+		super(id, nome, cognome, datanascita, comuneRes, tel, mail, ruolo);
 		this.grado = grado;
 		this.patente = patente;
 		this.annoDecreto = annoDecreto;
-		setQualifiche(qualifiche);
+		this.qualifiche = qualifiche;
 	}
 	
 	// GET - SET ---------------------------------------------------------------------------------------------------------------------------
-	
-	public String getId() {
-		return id;
-	}
 	
 	public String getGrado() {
 		return grado;
@@ -59,17 +51,17 @@ public class Vigile extends Persona {
 			this.annoDecreto = annoDecreto;
 	}
 
-	public List<String> getQualifiche() {
-		return qualifiche;
-	}
-
-	public void setQualifiche(String qualifiche) {
-		List<String> qual = Arrays.asList(qualifiche);
-		for(String s : qual)
-			for(String z: qualificheVal)
-				if(s.equalsIgnoreCase(z))
-					this.qualifiche.add(s);
-	}
+//	public List<String> getQualifiche() {
+//		return qualifiche;
+//	}
+//
+//	public void setQualifiche(String qualifiche) {
+//		List<String> qual = Arrays.asList(qualifiche);
+//		for(String s : qual)
+//			for(String z: qualificheVal)
+//				if(s.equalsIgnoreCase(z))
+//					this.qualifiche.add(s);
+//	}
 	
 	// VALIDAZIONE ---------------------------------------------------------------------------------------------------------------------------
 	
@@ -100,19 +92,22 @@ public class Vigile extends Persona {
 	public int anniServizio () {
 		return Year.now().getValue() - getAnnoDecreto();
 	}
+
 	
-	public String stampaQualifiche() {
-		String risposta = "";
-		for(String s : qualifiche)
-			risposta = s + ", ";
-		return risposta;
-	}
+//	public String stampaQualifiche() {
+//		String risposta = "";
+//		for(String s : qualifiche)
+//			risposta = s + ", ";
+//		return risposta;
+//	}
 
 	@Override
 	public String toString() {
-		return super.toString() + "\n" + (grado != null ? "Grado: " + grado + ", \n" : "") + "Patente: " + patente + "° grado, \nAnnoDecreto: "
-				+ annoDecreto + ", \n" + (qualifiche != null ? "Qualifiche: " + stampaQualifiche() : "");
+		return super.toString() + (grado != null ? "grado: " + grado + ", \n" : "") + "patente: " + patente + ", \nannoDecreto: "
+				+ annoDecreto + ", \n" + (qualifiche != null ? "qualifiche: " + qualifiche : "");
 	}
+
+	
 	
 	
 	

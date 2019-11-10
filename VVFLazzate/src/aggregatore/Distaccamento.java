@@ -6,9 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import db.Database;
-import enities.Dipartimento;
-import enities.Dipendente;
-import enities.Lingua;
 import entities.Intervento;
 import entities.Mezzo;
 import entities.Persona;
@@ -35,13 +32,18 @@ public class Distaccamento {
 			ResultSet tabsql = s.executeQuery(query);							// un oggetto ResultSet è un'intera tabella di SQL, sia dati che metadati
 			while(tabsql.next()) {
 				Persona p = new Vigile(	tabsql.getInt("id"),
-						tabsql.getString("nome"),
-						
-													tabsql.getInt("massimacapienza"),
-													tabsql.getString("nome"),
-													tabsql.getString("citta"),
-													tabsql.getDouble("budget"));
-				dipartimenti.add(d);
+										tabsql.getString("nome"),
+										tabsql.getString("cognome"),
+										tabsql.getString("datanascita"),
+										tabsql.getString("comuneres"),
+										tabsql.getString("telefono"),
+										tabsql.getString("mail"),
+										tabsql.getString("ruolo"),
+										tabsql.getString("grado"),
+										tabsql.getInt("patente"),
+										tabsql.getInt("annodec"),
+										tabsql.getString("qualifiche"));
+				personale.add(p);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -49,63 +51,77 @@ public class Distaccamento {
 		db.chiudiConnessione();
 	}
 	
-	public List<Dipendente> caricaDipendenti() {
-		List<Dipendente> dipendenti = new ArrayList<Dipendente>();
+	public void caricaMezzi() {
 		db.apriConnessione();
-		String query = "SELECT * FROM azienda.dipendenti;";
+		String query = "SELECT * FROM mezzi;";
 		try {
-			Statement s = db.getConnection().createStatement(); 				//createStatement() è lo strumento che ci consente di eseguire le query
-			ResultSet rs = s.executeQuery(query);							// un oggetto ResultSet  è un'intera tabella di SQL, sia dati che metadati
-			while(rs.next()) {
-				Dipendente d = new Dipendente(	rs.getInt("id"),
-												rs.getInt("mensilita"),
-												rs.getString("nome"),
-												rs.getString("cognome"),
-												rs.getString("genere"),
-												rs.getString("dataNascita"),
-												rs.getString("ruolo"),
-												rs.getString("citta"),
-												rs.getInt("iddipartimento"),
-												rs.getString("dataassunzione"),
-												rs.getInt("idresponsabile"),
-												rs.getDouble("stipendio"));
-				dipendenti.add(d);
-				for (Dipartimento dip : dipartimenti) {
-					if(dip.aggiungiDipendente(d))
-						break;
-				}
+			Statement s = db.getConnection().createStatement(); 				// createStatement() è lo strumento che ci consente di eseguire le query
+			ResultSet tabsql = s.executeQuery(query);							// un oggetto ResultSet è un'intera tabella di SQL, sia dati che metadati
+			while(tabsql.next()) {
+				Mezzo m = new Mezzo(	tabsql.getInt("id"),
+										tabsql.getString("nome"),
+										tabsql.getString("sigla"),
+										tabsql.getInt("disco"),
+										tabsql.getString("targa"),
+										tabsql.getInt("posti"),
+										tabsql.getInt("anno"));
+				mezzi.add(m);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		db.chiudiConnessione();
-		return dipendenti;
 	}
 	
-	public List<Lingua> caricaLingue() {
-		List<Lingua> lingue = new ArrayList<Lingua>();
-		db.apriConnessione();
-		String query = "select lingue.id, lingue.nome, lingue.bonus, parla.iddipendente, parla.competenza from parla join lingue on parla.idlingua = lingue.id";
-		try {
-			Statement s = db.getConnection().createStatement(); 				//createStatement() è lo strumento che ci consente di eseguire le query
-			ResultSet rs = s.executeQuery(query);							// un oggetto ResultSet  è un'intera tabella di SQL, sia dati che metadati
-			while(rs.next()) {
-				Lingua l = new Lingua(	rs.getInt("id"),
-												rs.getInt("competenza"),
-												rs.getInt("iddipendente"),
-												rs.getString("nome"),
-												rs.getDouble("bonus"));
-				lingue.add(l);
-				for (Dipartimento dip : dipartimenti) 
-					for(Dipendente d : dip.getDipendenti())
-						if(d.aggiungiLingua(l))
-							break;
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		db.chiudiConnessione();
-		return lingue;
+	// METODI ------------------------------------------------------------------------------------------
+	
+	public String stampaPersonale() {
+		String ris = "";
+		for(Persona p : personale)
+			ris += p.toString()+"\n------------------------------------\n";
+		return ris;
 	}
+	
+	public String stampaMezzi() {
+		String ris = "";
+		for(Mezzo p : mezzi)
+			ris += p+"\n------------------------------------\n";
+		return ris;
+	}
+	
+	public String stampaAnniServizio() {
+		String ris = "";
+		for(Persona p : personale)
+			if(p instanceof Vigile)
+				ris += p.getNome() + " " + p.getCognome() + " = " + ((Vigile)p).anniServizio() + " anni di servizio: decretato nel " + ((Vigile)p).getAnnoDecreto() + "\n";
+		return ris;
+	}
+	
+	
+	
+//	@Override
+//	public double maxstipendi() {
+//		double max = Double.MIN_VALUE;
+//		for(Dipartimento dipa : dipartimenti)
+//			for(Dipendente dipe : dipa.getDipendenti())
+//				max = (max < dipe.getStipendio()) ? dipe.getStipendio() : max;
+//	return max;
+//	}
+//
+//	@Override
+//	public double totstipendiNonORM() {
+//		db.apriConnessione();
+//		String query = "select round(sum(stipendio),2) totStipendi from dipendenti;";
+//		try {
+//			Statement s = db.getConnection().createStatement(); 				//createStatement() è lo strumento che ci consente di eseguire le query
+//			ResultSet rs = s.executeQuery(query);
+//			return (rs.next() && rs != null) ? rs.getDouble("totStipendi") : 0;		
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			return 0;
+//		} finally {
+//			db.chiudiConnessione();
+//		}
+//	}
 	
 }

@@ -3,23 +3,50 @@ package entities;
 public class Mezzo {
 	
 	private String nome, sigla, targa;
-	private int posti;
+	private int posti, id, disco, anno;
 	
 	private static  String charNotLetters = ",.;:-_|!£$%&/()=?^*+€°§";
 	
 	// COSTRUTTORE ---------------------------------------------------------------------------------------------------------------------------
 	
-	public Mezzo(String nome, String sigla, String targa, int posti) {
+	public Mezzo(int id, String nome, String sigla, int disco, String targa, int posti, int anno) {
 		this.nome = nome;
 		this.sigla = sigla;
 		this.targa = targa;
 		this.posti = posti;
+		this.anno = anno;
 	}
 
 	// GET SET ---------------------------------------------------------------------------------------------------------------------------
 	
 	public String getNome() {
 		return nome;
+	}
+
+	
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public int getDisco() {
+		return disco;
+	}
+
+	public void setDisco(int disco) {
+		this.disco = disco;
+	}
+
+	public int getAnno() {
+		return anno;
+	}
+
+	public void setAnno(int anno) {
+		this.anno = anno;
 	}
 
 	public void setNome(String nome) {
@@ -97,12 +124,15 @@ public class Mezzo {
 		return posti <= 6 && posti >= 2;
 	}
 
+
 	// METODI ---------------------------------------------------------------------------------------------------------------------------
 	
 	@Override
 	public String toString() {
-		return (nome != null ? "Nome: " + nome + ", \n" : "") + (sigla != null ? "Sigla: " + sigla + ", \n" : "")
-				+ (targa != null ? "Targa: " + targa + ", \n" : "") + "Posti: " + posti;
-	}	
+		return "id: " + id + ", \n" + (nome != null ? "nome: " + nome + ", \n" : "")
+				+ (sigla != null ? "sigla: " + sigla + ", \n" : "") + "disco: " + disco + ", \nposti: " + posti + ", \n"
+				+ (targa != null ? "targa: " + targa + ", \n" : "") + "anno: " + anno;
+	}
+	
 
 }
