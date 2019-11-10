@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import db.Database;
-import enities.Dipendente;
 import entities.Intervento;
 import entities.Mezzo;
 import entities.Persona;
