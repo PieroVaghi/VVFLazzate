@@ -8,7 +8,7 @@ import java.util.List;
 public class Vigile extends Persona {
 	
 	private String grado;
-	private int patente, annoDecreto;
+	private int id, patente, annoDecreto;
 	private List<String> qualifiche = new ArrayList<String>();
 	
 	static String[] qualificheVal = {"TPSS","SAF","NBCR","ATP"};
@@ -16,9 +16,10 @@ public class Vigile extends Persona {
 	
 	// COSTRUTTORE ---------------------------------------------------------------------------------------------------------------------------
 	
-	public Vigile(String nome, String cognome, String datanascita, String comuneRes, String tel, String mail,
+	public Vigile(int id, String nome, String cognome, String datanascita, String comuneRes, String tel, String mail,
 			String grado, int patente, int annoDecreto, String qualifiche) {
 		super(nome, cognome, datanascita, comuneRes, tel, mail);
+		this.id = id;
 		this.grado = grado;
 		this.patente = patente;
 		this.annoDecreto = annoDecreto;
@@ -26,6 +27,10 @@ public class Vigile extends Persona {
 	}
 	
 	// GET - SET ---------------------------------------------------------------------------------------------------------------------------
+	
+	public String getId() {
+		return id;
+	}
 	
 	public String getGrado() {
 		return grado;
