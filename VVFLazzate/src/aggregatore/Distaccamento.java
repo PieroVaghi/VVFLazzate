@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import db.Database;
+import enities.Dipendente;
 import entities.Intervento;
 import entities.Mezzo;
 import entities.Persona;
@@ -72,6 +73,16 @@ public class Distaccamento {
 			e.printStackTrace();
 		}
 		db.chiudiConnessione();
+	}
+	
+	public boolean aggiungiPersonale(Persona p)
+	{
+		if(!personale.contains(p)) {
+			for(Persona per : personale)
+				if(per.getId() == p.getId())
+					return false;
+			return personale.add(p);
+		} return false;
 	}
 	
 	// METODI ------------------------------------------------------------------------------------------
