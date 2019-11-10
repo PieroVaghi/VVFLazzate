@@ -233,8 +233,8 @@ public class Persona {
 				+ (cognome != null ? "cognome: " + cognome + ", \n" : "")
 				+ (datanascita != null ? "datanascita: " + datanascita + ", \n" : "")
 				+ (comuneRes != null ? "comuneRes: " + comuneRes + ", \n" : "")
-				+ (tel != null ? "tel: " + tel + ", \n" : "") + (mail != null ? "mail: " + mail + ", \n" : "")
-				+ (ruolo != null ? "ruolo: " + ruolo : "");
+				+ (tel != null ? "tel: " + tel + ", \n" : "") + (mail != null ? "mail: " + mail + "," : "");
+//				+ (ruolo != null ? "ruolo: " + ruolo : "");
 	}
 	
 
