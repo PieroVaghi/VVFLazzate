@@ -113,7 +113,16 @@ public class Distaccamento {
 		for(Persona p : personale)
 			if(p.getNome().equalsIgnoreCase(nome) && p.getCognome().equalsIgnoreCase(cognome))
 				ris += p + "\n";
-		return ris;
+		return (ris.isEmpty()) ? "Non è stato trovato nessun vigile corrispondente alla ricerca effettuata" : ris;
+	}
+	
+	public String ricerca (int gradopatente) {
+		String ris = "";
+		for(Persona p : personale)
+			if(p instanceof Vigile)
+			if(((Vigile)p).getPatente() == gradopatente)
+				ris += p + "\n";
+		return (ris.isEmpty()) ? "Non è stato trovato nessun vigile corrispondente alla ricerca effettuata" : ris;
 	}
 	
 	

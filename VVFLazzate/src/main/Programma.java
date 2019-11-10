@@ -17,11 +17,15 @@ public class Programma {
 //		System.out.println(lazzate.stampaPersonale());
 //		System.out.println(lazzate.stampaMezzi());
 //		System.out.println(lazzate.stampaAnniServizio());
-		System.out.println("Inserisci nome da cercare:");
-		String nome = tastiera.nextLine();
-		System.out.println("Inserisci cognome da cercare:");
-		String cognome = tastiera.nextLine();
-		System.out.println(lazzate.ricerca(nome, cognome));
+//		System.out.println("Inserisci nome da cercare:");
+//		String nome = tastiera.nextLine();
+//		System.out.println("Inserisci cognome da cercare:");
+//		String cognome = tastiera.nextLine();
+//		System.out.println(lazzate.ricerca(nome, cognome));
+		System.out.println("Inserisci grado di patente ministeriale da cercare (1,2,3,4):");
+		int gradopatente = Integer.parseInt(tastiera.nextLine());
+		System.out.println(lazzate.ricerca(gradopatente));
+
 		
 	}
 
