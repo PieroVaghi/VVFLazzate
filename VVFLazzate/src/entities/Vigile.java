@@ -90,7 +90,10 @@ public class Vigile extends Persona {
 	// METODI ---------------------------------------------------------------------------------------------------------------------------
 	
 	public int anniServizio () {
-		return Year.now().getValue() - getAnnoDecreto();
+		if(annoDecreto != 0)
+			return Year.now().getValue() - getAnnoDecreto();
+		else
+			return -1;
 	}
 
 	

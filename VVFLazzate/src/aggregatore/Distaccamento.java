@@ -104,7 +104,10 @@ public class Distaccamento {
 		String ris = "";
 		for(Persona p : personale)
 			if(p instanceof Vigile)
-				ris += p.getNome() + " " + p.getCognome() + " = " + ((Vigile)p).anniServizio() + " anni di servizio: decretato nel " + ((Vigile)p).getAnnoDecreto() + "\n";
+				if(((Vigile)p).anniServizio()>0)
+					ris += p.getNome() + " " + p.getCognome() + " = " + ((Vigile)p).anniServizio() + " anni di servizio: decretato nel " + ((Vigile)p).getAnnoDecreto() + "\n";
+				else
+					ris += p.getNome() + " " + p.getCognome() + " = Non possediamo sufficenti dati riguardanti il vigile considerato\n";
 		return ris;
 	}
 	
