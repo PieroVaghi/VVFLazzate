@@ -7,13 +7,13 @@ public class Intervento {
 	private int rapporto, unita;
 	private String data, funzionario, tipologia, comune, indirizzo, oraUscita, oraRientro, note;
 	private boolean reperibilita;
-	private List<Vigile> capopartenza, autista, vigili;
+	private List<Personale> capopartenza, autista, vigili;
 	
 	// COSTRUTTORE ---------------------------------------------------------------------------------------------------------------------------------------
 	
 	public Intervento(int rapporto, String data, String funzionario, String tipologia, String comune, String indirizzo,
-			String oraUscita, String oraRientro, boolean reperibilita, int unita, List<Vigile> capopartenza,
-			List<Vigile> autista, List<Vigile> vigili, String note) {
+			String oraUscita, String oraRientro, boolean reperibilita, int unita, List<Personale> capopartenza,
+			List<Personale> autista, List<Personale> vigili, String note) {
 		this.rapporto = rapporto;
 		this.data = data;
 		this.funzionario = funzionario;
@@ -76,15 +76,15 @@ public class Intervento {
 		return reperibilita;
 	}
 	
-	public List<Vigile> getCapopartenza() {
+	public List<Personale> getCapopartenza() {
 		return capopartenza;
 	}
 	
-	public List<Vigile> getAutista() {
+	public List<Personale> getAutista() {
 		return autista;
 	}
 	
-	public List<Vigile> getVigili() {
+	public List<Personale> getVigili() {
 		return vigili;
 	}
 	

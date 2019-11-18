@@ -5,7 +5,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import db.Database;
+import dao.Database;
 import entities.Intervento;
 import entities.Mezzo;
 import entities.Persona;
